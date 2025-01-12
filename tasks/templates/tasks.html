@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md6 offset-md3">
+            <h1 class="text-center display-3 py-5">Inventario</h1>
+                <a href="{% url 'download_tasks' %}" class="btn btn-primary">
+                    Exportar a Excel
+                    </a>
+<ul class="list-group">
+    
+ {% for task in tasks %}
+  <li class="list-group-item">
+    <a href="{% url 'task_detail' task.id %}">
+      <header class="d-flex justify-content-between">
+        <strong class="fw-bold text-success">{{task.Equipo}}</strong>
+        <strong>{{task.user.username}}</strong>
+
+      </header>
+        
+    </a>
+ </li>
+{% endfor %}
+    
+</ul>
+        </div>
+    </div>
+</main>
+    {% endblock %}
